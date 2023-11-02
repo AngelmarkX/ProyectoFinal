@@ -86,7 +86,7 @@ public class Login extends javax.swing.JFrame {
 
         userTxt.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         userTxt.setForeground(new java.awt.Color(102, 102, 102));
-        userTxt.setText("Ingrese su nombre de usuario");
+        userTxt.setText("Ingrese su nombre de usuario:");
         userTxt.setBorder(null);
         userTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
