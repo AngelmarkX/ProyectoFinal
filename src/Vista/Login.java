@@ -4,7 +4,17 @@
  */
 package Vista;
 
+import Controlador.conexionDB;
+import java.awt.Color;
 import javax.swing.ImageIcon;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -19,6 +29,8 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +50,7 @@ public class Login extends javax.swing.JFrame {
         SeparUsuario = new javax.swing.JSeparator();
         textoContraseña = new javax.swing.JLabel();
         SeparContraseña = new javax.swing.JSeparator();
-        Contraseña = new javax.swing.JPasswordField();
+        userPassword = new javax.swing.JPasswordField();
         PanelEntrar = new javax.swing.JPanel();
         Entrar = new javax.swing.JLabel();
 
@@ -76,6 +88,11 @@ public class Login extends javax.swing.JFrame {
         userTxt.setForeground(new java.awt.Color(102, 102, 102));
         userTxt.setText("Ingrese su nombre de usuario");
         userTxt.setBorder(null);
+        userTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                userTxtMousePressed(evt);
+            }
+        });
         userTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userTxtActionPerformed(evt);
@@ -89,13 +106,18 @@ public class Login extends javax.swing.JFrame {
 
         SeparContraseña.setForeground(new java.awt.Color(0, 0, 0));
 
-        Contraseña.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        Contraseña.setForeground(new java.awt.Color(102, 102, 102));
-        Contraseña.setText("jPasswordField1");
-        Contraseña.setBorder(null);
-        Contraseña.addActionListener(new java.awt.event.ActionListener() {
+        userPassword.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        userPassword.setForeground(new java.awt.Color(102, 102, 102));
+        userPassword.setText("********");
+        userPassword.setBorder(null);
+        userPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                userPasswordMousePressed(evt);
+            }
+        });
+        userPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ContraseñaActionPerformed(evt);
+                userPasswordActionPerformed(evt);
             }
         });
 
@@ -105,6 +127,11 @@ public class Login extends javax.swing.JFrame {
         Entrar.setForeground(new java.awt.Color(255, 255, 255));
         Entrar.setText("        ENTRAR");
         Entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Entrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                EntrarMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelEntrarLayout = new javax.swing.GroupLayout(PanelEntrar);
         PanelEntrar.setLayout(PanelEntrarLayout);
@@ -127,7 +154,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PanelEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IniciarSesion)
                     .addComponent(Usuario)
@@ -155,7 +182,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addComponent(textoContraseña)
                 .addGap(34, 34, 34)
-                .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SeparContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
@@ -172,9 +199,67 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userTxtActionPerformed
 
-    private void ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaActionPerformed
+    private void userPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ContraseñaActionPerformed
+    }//GEN-LAST:event_userPasswordActionPerformed
+
+    private void userTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTxtMousePressed
+        // TODO add your handling code here:
+          if (userTxt.getText().equals("Ingrese su nombre de usuario")) {
+            userTxt.setText("");
+            userTxt.setForeground(Color.black);
+        }
+        if (String.valueOf(userPassword.getPassword()).isEmpty()) {
+            userPassword.setText("********");
+            userPassword.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_userTxtMousePressed
+
+    private void userPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userPasswordMousePressed
+       if (String.valueOf(userPassword.getPassword()).equals("********")) {
+            userPassword.setText("");
+            userPassword.setForeground(Color.black);
+        }
+        if (userTxt.getText().isEmpty()) {
+            userTxt.setText("Ingrese su nombre de usuario");
+            userTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_userPasswordMousePressed
+
+    private void EntrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EntrarMousePressed
+         String usuario = userTxt.getText();
+        char[] caracteresContraseña = userPassword.getPassword();
+        String contraseña = new String(caracteresContraseña);
+
+        if (autenticar(usuario, contraseña)) {
+            // Las credenciales son válidas, permitir el acceso
+            JOptionPane.showMessageDialog(null, "Ingreso exitoso");
+
+            // Cierra la ventana actual (Login)
+            this.dispose();
+        } else {
+            // Credenciales inválidas, muestra un mensaje de error
+            JOptionPane.showMessageDialog(this, "Credenciales inválidas. Inténtalo de nuevo.");
+        }
+    }
+
+    private boolean autenticar(String usuario, String contraseña) {
+        try {
+            Connection connection = conexionDB.getConnection();
+            String query = "SELECT * FROM Administradores WHERE Usuario = ? AND Contraseña = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, usuario);
+            preparedStatement.setString(2, contraseña);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return resultSet.next(); // Si hay un resultado, las credenciales son válidas
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    
+    }//GEN-LAST:event_EntrarMousePressed
 
     /**
      * @param args the command line arguments
@@ -215,7 +300,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField Contraseña;
     private javax.swing.JLabel Entrar;
     private javax.swing.JLabel IniciarSesion;
     private javax.swing.JLabel Login;
@@ -226,6 +310,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Usuario;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel textoContraseña;
+    private javax.swing.JPasswordField userPassword;
     private javax.swing.JTextField userTxt;
     // End of variables declaration//GEN-END:variables
 }

@@ -48,7 +48,7 @@
                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="PanelEntrar" min="-2" max="-2" attributes="0"/>
-                      <Component id="Contraseña" min="-2" pref="468" max="-2" attributes="0"/>
+                      <Component id="userPassword" min="-2" pref="468" max="-2" attributes="0"/>
                       <Component id="Login" min="-2" pref="260" max="-2" attributes="0"/>
                       <Component id="IniciarSesion" min="-2" max="-2" attributes="0"/>
                       <Component id="Usuario" min="-2" max="-2" attributes="0"/>
@@ -79,7 +79,7 @@
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   <Component id="textoContraseña" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="Contraseña" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="userPassword" min="-2" pref="28" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="SeparContraseña" min="-2" pref="3" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -151,6 +151,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="userTxtMousePressed"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userTxtActionPerformed"/>
           </Events>
         </Component>
@@ -176,7 +177,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="Contrase&#xf1;a">
+        <Component class="javax.swing.JPasswordField" name="userPassword">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto Black" size="14" style="0"/>
@@ -184,13 +185,14 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+            <Property name="text" type="java.lang.String" value="********"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Contrase&#xf1;aActionPerformed"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="userPasswordMousePressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userPasswordActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="PanelEntrar">
@@ -229,6 +231,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EntrarMousePressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
