@@ -11,15 +11,15 @@ import javax.swing.SwingUtilities;
  *
  * @author Miguel
  */
-public class Main {
+import Vista.Login;
 
- 
+public class Main {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PantallaInicio pantallaInicio = new PantallaInicio();
+                new Login().setVisible(true);
             }
         });
     }
-    
 }
+
