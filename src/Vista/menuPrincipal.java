@@ -26,197 +26,197 @@ public class menuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        btn_prin = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        bgPrincipal = new javax.swing.JPanel();
+        menuPrincipal = new javax.swing.JPanel();
+        labelUsuarios = new javax.swing.JPanel();
+        textoUsuarios = new javax.swing.JLabel();
+        iconoUsuarios = new javax.swing.JLabel();
         app_name = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        btn_prin1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        btn_prin2 = new javax.swing.JPanel();
+        labelControlAcceso = new javax.swing.JPanel();
+        textoAcceso = new javax.swing.JLabel();
+        iconoAcceso = new javax.swing.JLabel();
+        labelPrincipal = new javax.swing.JPanel();
+        textoPrincipal = new javax.swing.JLabel();
+        iconoPrincipal = new javax.swing.JLabel();
+        Header = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(940, 654));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        bgPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        bgPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(119, 56, 200));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menuPrincipal.setBackground(new java.awt.Color(119, 56, 200));
+        menuPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_prin.setBackground(new java.awt.Color(138, 84, 206));
-        btn_prin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_prin.addMouseListener(new java.awt.event.MouseAdapter() {
+        labelUsuarios.setBackground(new java.awt.Color(138, 84, 206));
+        labelUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_prinMouseEntered(evt);
+                labelUsuariosMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_prinMouseExited(evt);
+                labelUsuariosMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_prinMousePressed(evt);
+                labelUsuariosMousePressed(evt);
             }
         });
-        btn_prin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        labelUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_prin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
+        textoUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        textoUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        textoUsuarios.setText("Usuarios");
+        labelUsuarios.add(textoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 30));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Usuarios");
-        btn_prin.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
+        iconoUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/account-multiple.png"))); // NOI18N
+        labelUsuarios.add(iconoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel2.add(btn_prin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 240, 50));
+        menuPrincipal.add(labelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 240, 50));
 
         app_name.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         app_name.setForeground(new java.awt.Color(255, 255, 255));
         app_name.setText("Biblioteca");
-        jPanel2.add(app_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+        menuPrincipal.add(app_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
 
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 5));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 190, 20));
+        menuPrincipal.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 190, 20));
 
-        btn_prin1.setBackground(new java.awt.Color(138, 84, 206));
-        btn_prin1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_prin1.addMouseListener(new java.awt.event.MouseAdapter() {
+        labelControlAcceso.setBackground(new java.awt.Color(138, 84, 206));
+        labelControlAcceso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelControlAcceso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_prin1MouseEntered(evt);
+                labelControlAccesoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_prin1MouseExited(evt);
+                labelControlAccesoMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_prin1MousePressed(evt);
+                labelControlAccesoMousePressed(evt);
             }
         });
-        btn_prin1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        labelControlAcceso.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_prin1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
+        textoAcceso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        textoAcceso.setForeground(new java.awt.Color(255, 255, 255));
+        textoAcceso.setText("Control Acceso");
+        labelControlAcceso.add(textoAcceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 30));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Control Acceso");
-        btn_prin1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
+        iconoAcceso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/calendar-multiple-check.png"))); // NOI18N
+        labelControlAcceso.add(iconoAcceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel2.add(btn_prin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 240, 50));
+        menuPrincipal.add(labelControlAcceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 240, 50));
 
-        btn_prin2.setBackground(new java.awt.Color(138, 84, 206));
-        btn_prin2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_prin2.addMouseListener(new java.awt.event.MouseAdapter() {
+        labelPrincipal.setBackground(new java.awt.Color(138, 84, 206));
+        labelPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_prin2MouseEntered(evt);
+                labelPrincipalMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_prin2MouseExited(evt);
+                labelPrincipalMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_prin2MousePressed(evt);
+                labelPrincipalMousePressed(evt);
             }
         });
-        btn_prin2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        labelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_prin2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
+        textoPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        textoPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        textoPrincipal.setText("Principal");
+        labelPrincipal.add(textoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 30));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Principal");
-        btn_prin2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
+        iconoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home-outline.png"))); // NOI18N
+        labelPrincipal.add(iconoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 30, 30));
 
-        jPanel2.add(btn_prin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 240, 50));
+        menuPrincipal.add(labelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 240, 50));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 239, 650));
+        bgPrincipal.add(menuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
 
-        jPanel3.setBackground(new java.awt.Color(119, 56, 200));
+        Header.setBackground(new java.awt.Color(138, 84, 206));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 880, Short.MAX_VALUE)
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Administración/Control/Biblioteca");
+
+        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGap(165, 165, 165)
+                .addComponent(jLabel3)
+                .addContainerGap(165, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 127, Short.MAX_VALUE)
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(52, 52, 52))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 880, -1));
+        bgPrincipal.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 700, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Administración/Control/Biblioteca");
+        bgPrincipal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bgPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bgPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_prinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prinMouseEntered
-        if(btn_prin.getBackground().getRGB() == -15574355)
-        setColor(btn_prin);
-    }//GEN-LAST:event_btn_prinMouseEntered
+    private void labelUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelUsuariosMouseEntered
+ 
+    }//GEN-LAST:event_labelUsuariosMouseEntered
 
-    private void btn_prinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prinMouseExited
-        if(btn_lends.getBackground().getRGB() != -15574355 || btn_returns.getBackground().getRGB() != -15574355
-            || btn_users.getBackground().getRGB() != -15574355 || btn_books.getBackground().getRGB() != -15574355 || btn_reports.getBackground().getRGB() != -15574355)
-        resetColor(btn_prin);
-    }//GEN-LAST:event_btn_prinMouseExited
+    private void labelUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelUsuariosMouseExited
 
-    private void btn_prinMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prinMousePressed
-        setColor(btn_prin);
-        resetColor(btn_lends);
-        resetColor(btn_returns);
-        resetColor(btn_users);
-        resetColor(btn_books);
-        resetColor(btn_reports);
-        // Abrir sección
-        Principal p1 = new Principal();
-        p1.setSize(750, 430);
-        p1.setLocation(0,0);
+    }//GEN-LAST:event_labelUsuariosMouseExited
 
-        content.removeAll();
-        content.add(p1, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
-    }//GEN-LAST:event_btn_prinMousePressed
+    private void labelUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelUsuariosMousePressed
+    
+    }//GEN-LAST:event_labelUsuariosMousePressed
 
-    private void btn_prin1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prin1MouseEntered
+    private void labelControlAccesoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelControlAccesoMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_prin1MouseEntered
+    }//GEN-LAST:event_labelControlAccesoMouseEntered
 
-    private void btn_prin1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prin1MouseExited
+    private void labelControlAccesoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelControlAccesoMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_prin1MouseExited
+    }//GEN-LAST:event_labelControlAccesoMouseExited
 
-    private void btn_prin1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prin1MousePressed
+    private void labelControlAccesoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelControlAccesoMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_prin1MousePressed
+    }//GEN-LAST:event_labelControlAccesoMousePressed
 
-    private void btn_prin2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prin2MouseEntered
+    private void labelPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPrincipalMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_prin2MouseEntered
+    }//GEN-LAST:event_labelPrincipalMouseEntered
 
-    private void btn_prin2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prin2MouseExited
+    private void labelPrincipalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPrincipalMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_prin2MouseExited
+    }//GEN-LAST:event_labelPrincipalMouseExited
 
-    private void btn_prin2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prin2MousePressed
+    private void labelPrincipalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPrincipalMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_prin2MousePressed
+    }//GEN-LAST:event_labelPrincipalMousePressed
 
     /**
      * @param args the command line arguments
@@ -254,19 +254,21 @@ public class menuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Header;
     private javax.swing.JLabel app_name;
-    private javax.swing.JPanel btn_prin;
-    private javax.swing.JPanel btn_prin1;
-    private javax.swing.JPanel btn_prin2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel bgPrincipal;
+    private javax.swing.JLabel iconoAcceso;
+    private javax.swing.JLabel iconoPrincipal;
+    private javax.swing.JLabel iconoUsuarios;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel labelControlAcceso;
+    private javax.swing.JPanel labelPrincipal;
+    private javax.swing.JPanel labelUsuarios;
+    private javax.swing.JPanel menuPrincipal;
+    private javax.swing.JLabel textoAcceso;
+    private javax.swing.JLabel textoPrincipal;
+    private javax.swing.JLabel textoUsuarios;
     // End of variables declaration//GEN-END:variables
 }
