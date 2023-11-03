@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author Miguel
@@ -41,7 +43,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         iconoPrincipal = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        Contenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(940, 654));
@@ -155,18 +157,28 @@ public class menuPrincipal extends javax.swing.JFrame {
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addComponent(jLabel3)
-                .addGap(52, 52, 52))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        bgPrincipal.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 700, -1));
+        bgPrincipal.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 700, 100));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Administración/Control/Biblioteca");
-        bgPrincipal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Contenido.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout ContenidoLayout = new javax.swing.GroupLayout(Contenido);
+        Contenido.setLayout(ContenidoLayout);
+        ContenidoLayout.setHorizontalGroup(
+            ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 680, Short.MAX_VALUE)
+        );
+        ContenidoLayout.setVerticalGroup(
+            ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 530, Short.MAX_VALUE)
+        );
+
+        bgPrincipal.add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 680, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,6 +192,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void labelUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelUsuariosMouseEntered
@@ -191,7 +204,14 @@ public class menuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_labelUsuariosMouseExited
 
     private void labelUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelUsuariosMousePressed
-    
+        pantallaUsuario p1 = new pantallaUsuario();
+        p1.setSize(680,530 );
+        p1.setLocation(0,0);
+        
+        Contenido.removeAll();
+        Contenido.add(p1, BorderLayout.CENTER);
+        Contenido.revalidate();
+        Contenido.repaint();
     }//GEN-LAST:event_labelUsuariosMousePressed
 
     private void labelControlAccesoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelControlAccesoMouseEntered
@@ -203,7 +223,14 @@ public class menuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_labelControlAccesoMouseExited
 
     private void labelControlAccesoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelControlAccesoMousePressed
-        // TODO add your handling code here:
+        ControlAccesoo p1 = new ControlAccesoo();
+        p1.setSize(680, 510);
+        p1.setLocation(0,0);
+        
+        Contenido.removeAll();
+        Contenido.add(p1, BorderLayout.CENTER);
+        Contenido.revalidate();
+        Contenido.repaint();
     }//GEN-LAST:event_labelControlAccesoMousePressed
 
     private void labelPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPrincipalMouseEntered
@@ -254,13 +281,13 @@ public class menuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Contenido;
     private javax.swing.JPanel Header;
     private javax.swing.JLabel app_name;
     private javax.swing.JPanel bgPrincipal;
     private javax.swing.JLabel iconoAcceso;
     private javax.swing.JLabel iconoPrincipal;
     private javax.swing.JLabel iconoUsuarios;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel labelControlAcceso;
