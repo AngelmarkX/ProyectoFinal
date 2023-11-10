@@ -3,18 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Vista/PantallaInicio.java</file>
-            <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Controlador/ControladorPrincipal.java</file>
-            <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Vista/Login.java</file>
-            <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Controlador/conexionDB.java</file>
-            <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/proyectofinal/Main.java</file>
-=======
             <file>file:/C:/Users/Usuario/Desktop/GitHub/ProyectoFinal/src/Controlador/ControladorPrincipal.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/GitHub/ProyectoFinal/src/Vista/PantallaInicio.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/GitHub/ProyectoFinal/src/Modelo/ControlAcceso.java</file>
             <file>file:/C:/Users/Usuario/Desktop/GitHub/ProyectoFinal/src/Vista/Login.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/GitHub/ProyectoFinal/src/Modelo/Horario.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/GitHub/ProyectoFinal/src/Vista/pantallaUsuario.java</file>
             <file>file:/C:/Users/Usuario/Desktop/GitHub/ProyectoFinal/src/Controlador/conexionDB.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/GitHub/ProyectoFinal/src/proyectofinal/Main.java</file>
->>>>>>> d25c46ed13a09476161b5c5a351de9fea98c0fee
+            <file>file:/C:/Users/Usuario/Desktop/GitHub/ProyectoFinal/src/Modelo/RegistroAcceso.java</file>
         </group>
     </open-files>
 </project-private>
