@@ -224,7 +224,11 @@ public class menuPrincipal extends javax.swing.JFrame {
 
     private void labelControlAccesoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelControlAccesoMousePressed
         ControlDeAcceso p1 = new ControlDeAcceso();
+
         p1.setSize(680, 530);
+
+        p1.setSize(680, 510);
+
         p1.setLocation(0,0);
         
         Contenido.removeAll();
