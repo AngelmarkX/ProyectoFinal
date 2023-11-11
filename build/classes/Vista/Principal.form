@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="BackGround" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="BackGround" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="BackGround">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                      <Component id="FotoSalaGeneral" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                      <Component id="SalaGeneral" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="SalaReferencia" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="FotoSalaInfyJuve" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                      <Component id="FotoSalaReferencia" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                                      <Component id="SalaInfanyJuvenil" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="bibliocafe" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="SubTitulo" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="Titulo" min="-2" pref="500" max="-2" attributes="0"/>
+                                  <Component id="TextDescrip2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TextDescrip" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FotoBibliocafe" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FotoLogo" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="SubTitulo2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="TextRyC" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="TextRyC2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="TextRyC3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="Titulo" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="TextDescrip" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="TextDescrip2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="SubTitulo" min="-2" pref="27" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="SalaGeneral" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="FotoSalaReferencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SalaInfanyJuvenil" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bibliocafe" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="FotoSalaGeneral" min="-2" max="-2" attributes="0"/>
+                      <Component id="SalaReferencia" min="-2" max="-2" attributes="0"/>
+                      <Component id="FotoSalaInfyJuve" min="-2" max="-2" attributes="0"/>
+                      <Component id="FotoBibliocafe" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="SubTitulo2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="TextRyC" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="TextRyC2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="TextRyC3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="FotoLogo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="Titulo">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="14" style="3"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Biblioteca Cardenal Dar&#xed;o Castrill&#xf3;n Hoyos de la Universidad Cat&#xf3;lica de Pereira"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="TextDescrip">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="La Biblioteca Cardenal Dar&#xed;o Castrill&#xf3;n Hoyos tiene como prop&#xf3;sito contribuir al desarrollo acad&#xe9;mico, intelectual y cultural de la "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="TextDescrip2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="comunidad universitaria y de la regi&#xf3;n a trav&#xe9;s de recursos y servicios especializados que promuevan el aprendizaje y la investigaci&#xf3;n."/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="SubTitulo">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="12" style="3"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="NUESTROS ESPACIOS "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="SalaGeneral">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sala General "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="FotoSalaGeneral">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/BibliotecaSala.png"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="SalaReferencia">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/SalaBiblioteca.jpg"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="FotoSalaReferencia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sala de Referencia"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="FotoSalaInfyJuve">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/infantil-5.jpg"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="SalaInfanyJuvenil">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sala Infantil y Juvenil"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="bibliocafe">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Bibliocaf&#xe9;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="FotoBibliocafe">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/bibliocafe-2.jpg"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="SubTitulo2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="12" style="3"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Registo y control del recinto  "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="TextRyC">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="A continuacion se podra Agregar, Editar, y Eliminar nuevos o antiguos visitantes de la Biblioteca Cardenal"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="TextRyC2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Dario Castrillon de la Universidad Catolica de Pereira, llevando acabo un mejor control de los usuarios,"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="TextRyC3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="haciendo que sea mas facil para los usuarios, y llevar un conteo de los usuarios."/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="FotoLogo">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/LogoUniversidadXbiblioteca.png"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

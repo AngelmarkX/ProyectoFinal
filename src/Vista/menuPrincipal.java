@@ -223,7 +223,7 @@ public class menuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_labelControlAccesoMouseExited
 
     private void labelControlAccesoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelControlAccesoMousePressed
-        ControlAccesoo p1 = new ControlAccesoo();
+        ControlDeAcceso p1 = new ControlDeAcceso();
         p1.setSize(680, 510);
         p1.setLocation(0,0);
         
