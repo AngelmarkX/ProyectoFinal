@@ -7,6 +7,7 @@ package Vista;
 import java.awt.BorderLayout;
 import static Vista.menuPrincipal.Contenido;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,6 +68,19 @@ public class pantallaUsuario extends javax.swing.JPanel {
         // Establecer el modelo en la tabla
         jTable1.setModel(model);
     }
+    
+    private int obtenerUsuarioIDSeleccionado() {
+    int filaSeleccionada = jTable1.getSelectedRow();
+
+    // Verificar si hay una fila seleccionada
+    if (filaSeleccionada == -1) {
+        System.out.println("Seleccione un usuario.");
+        return -1; // Devuelve un valor que indica que no hay usuario seleccionado
+    }
+
+    // Obtener el ID del usuario seleccionado en la tabla
+    return (int) jTable1.getValueAt(filaSeleccionada, 0);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,16 +97,12 @@ public class pantallaUsuario extends javax.swing.JPanel {
         tituloUsuarios = new javax.swing.JLabel();
         textoFieldUsuario = new javax.swing.JTextField();
         separador1 = new javax.swing.JSeparator();
-        botonEliminar = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        botonNuevo = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        botonEditar = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        botonBuscar = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        botonNuevo = new javax.swing.JButton();
+        botonEditar = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
+        botonBuscar = new javax.swing.JButton();
 
         body.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -102,39 +112,16 @@ public class pantallaUsuario extends javax.swing.JPanel {
         textoFieldUsuario.setForeground(new java.awt.Color(102, 102, 102));
         textoFieldUsuario.setText("Ingrese el nombre de usuario a buscar");
         textoFieldUsuario.setBorder(null);
+        textoFieldUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                textoFieldUsuarioMousePressed(evt);
+            }
+        });
         textoFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoFieldUsuarioActionPerformed(evt);
             }
         });
-
-        botonEliminar.setBackground(new java.awt.Color(119, 56, 200));
-        botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                botonEliminarMousePressed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("ELIMINAR");
-
-        javax.swing.GroupLayout botonEliminarLayout = new javax.swing.GroupLayout(botonEliminar);
-        botonEliminar.setLayout(botonEliminarLayout);
-        botonEliminarLayout.setHorizontalGroup(
-            botonEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonEliminarLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel2)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        botonEliminarLayout.setVerticalGroup(
-            botonEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonEliminarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -185,78 +172,72 @@ public class pantallaUsuario extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         botonNuevo.setBackground(new java.awt.Color(119, 56, 200));
+        botonNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        botonNuevo.setText("NUEVO");
+        botonNuevo.setAlignmentX(0.5F);
+        botonNuevo.setPreferredSize(new java.awt.Dimension(65, 20));
         botonNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonNuevoMousePressed(evt);
             }
         });
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("NUEVO");
-
-        javax.swing.GroupLayout botonNuevoLayout = new javax.swing.GroupLayout(botonNuevo);
-        botonNuevo.setLayout(botonNuevoLayout);
-        botonNuevoLayout.setHorizontalGroup(
-            botonNuevoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonNuevoLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel3)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        botonNuevoLayout.setVerticalGroup(
-            botonNuevoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonNuevoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        botonNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNuevoActionPerformed(evt);
+            }
+        });
 
         botonEditar.setBackground(new java.awt.Color(119, 56, 200));
+        botonEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonEditar.setForeground(new java.awt.Color(255, 255, 255));
+        botonEditar.setText("EDITAR");
+        botonEditar.setAlignmentX(0.5F);
+        botonEditar.setPreferredSize(new java.awt.Dimension(65, 20));
+        botonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonEditarMousePressed(evt);
+            }
+        });
+        botonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEditarActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("EDITAR");
-
-        javax.swing.GroupLayout botonEditarLayout = new javax.swing.GroupLayout(botonEditar);
-        botonEditar.setLayout(botonEditarLayout);
-        botonEditarLayout.setHorizontalGroup(
-            botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonEditarLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel4)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        botonEditarLayout.setVerticalGroup(
-            botonEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonEditarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        botonEliminar.setBackground(new java.awt.Color(119, 56, 200));
+        botonEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        botonEliminar.setText("ELIMINAR");
+        botonEliminar.setAlignmentX(0.5F);
+        botonEliminar.setPreferredSize(new java.awt.Dimension(65, 20));
+        botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonEliminarMousePressed(evt);
+            }
+        });
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
 
         botonBuscar.setBackground(new java.awt.Color(119, 56, 200));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("BUSCAR");
-
-        javax.swing.GroupLayout botonBuscarLayout = new javax.swing.GroupLayout(botonBuscar);
-        botonBuscar.setLayout(botonBuscarLayout);
-        botonBuscarLayout.setHorizontalGroup(
-            botonBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonBuscarLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel5)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        botonBuscarLayout.setVerticalGroup(
-            botonBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(botonBuscarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        botonBuscar.setText("BUSCAR");
+        botonBuscar.setAlignmentX(0.5F);
+        botonBuscar.setPreferredSize(new java.awt.Dimension(65, 20));
+        botonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonBuscarMousePressed(evt);
+            }
+        });
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
         body.setLayout(bodyLayout);
@@ -266,23 +247,23 @@ public class pantallaUsuario extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bodyLayout.createSequentialGroup()
+                        .addComponent(textoFieldUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100))
+                    .addGroup(bodyLayout.createSequentialGroup()
                         .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloUsuarios)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(bodyLayout.createSequentialGroup()
-                                .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(27, Short.MAX_VALUE))
-                    .addGroup(bodyLayout.createSequentialGroup()
-                        .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tituloUsuarios)
-                            .addComponent(textoFieldUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
-                            .addComponent(separador1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))))
+                                .addGap(1, 1, 1)
+                                .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(separador1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         bodyLayout.setVerticalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,26 +271,26 @@ public class pantallaUsuario extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addComponent(tituloUsuarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textoFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separador1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
+            .addGap(0, 755, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -318,7 +299,7 @@ public class pantallaUsuario extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 534, Short.MAX_VALUE)
+            .addGap(0, 536, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -328,12 +309,20 @@ public class pantallaUsuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void textoFieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoFieldUsuarioActionPerformed
-        // TODO add your handling code here:
+   
     }//GEN-LAST:event_textoFieldUsuarioActionPerformed
 
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
 
     }//GEN-LAST:event_jTable1MousePressed
+
+    private void textoFieldUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoFieldUsuarioMousePressed
+            if (textoFieldUsuario.getText().equals("Ingrese el nombre de usuario a buscar")) {
+            textoFieldUsuario.setText("");
+            textoFieldUsuario.setForeground(Color.black);
+        }
+               
+    }//GEN-LAST:event_textoFieldUsuarioMousePressed
 
     private void botonNuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNuevoMousePressed
         crearUsuario p1 = new crearUsuario();
@@ -346,8 +335,39 @@ public class pantallaUsuario extends javax.swing.JPanel {
         Contenido.repaint();
     }//GEN-LAST:event_botonNuevoMousePressed
 
+    private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonNuevoActionPerformed
+
+    private void botonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEditarMousePressed
+        // Obtener el ID del usuario seleccionado
+    int usuarioID = obtenerUsuarioIDSeleccionado();
+
+    // Verificar si hay un usuario seleccionado
+    if (usuarioID != -1) {
+        // Crear una instancia de editarUsuario y setear los datos del usuario
+  
+        editarUsuario p1 = new editarUsuario();
+        p1.setSize(680,530 );
+        p1.setLocation(0,0);
+        p1.setDatosUsuario(usuarioID);
+
+        // Mostrar el formulario de edición
+        Contenido.removeAll();
+        Contenido.add(p1, BorderLayout.CENTER);
+        Contenido.revalidate();
+        Contenido.repaint();
+    } else {
+        System.out.println("Seleccione un usuario para editar.");
+    }
+    }//GEN-LAST:event_botonEditarMousePressed
+
+    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonEditarActionPerformed
+
     private void botonEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMousePressed
-        // Obtener la fila seleccionada en la tabla
+             // Obtener la fila seleccionada en la tabla
     int filaSeleccionada = jTable1.getSelectedRow();
 
     // Verificar si hay una fila seleccionada
@@ -385,17 +405,66 @@ public class pantallaUsuario extends javax.swing.JPanel {
     }
     }//GEN-LAST:event_botonEliminarMousePressed
 
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBuscarMousePressed
+               // Obtener el nombre de usuario a buscar
+    String nombreUsuario = textoFieldUsuario.getText();
+
+    // Ejecutar la consulta SQL para buscar usuarios por nombre
+    try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
+        String query = "SELECT * FROM Usuarios WHERE Nombre LIKE ?";
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, "%" + nombreUsuario + "%"); // Utilizamos % para buscar coincidencias parciales
+
+        ResultSet rs = pst.executeQuery();
+
+        // Configuración del modelo de la tabla
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("Nombre");
+        model.addColumn("Apellido");
+        model.addColumn("Teléfono");
+        model.addColumn("Correo");
+
+        // Llenar la tabla con datos de la consulta
+        while (rs.next()) {
+            model.addRow(new Object[]{
+                    rs.getInt("usuarioID"),
+                    rs.getString("Nombre"),
+                    rs.getString("Apellido"),
+                    rs.getString("Telefono"),
+                    rs.getString("Correo")
+            });
+        }
+
+        // Establecer el modelo en la tabla
+        jTable1.setModel(model);
+
+        // Cerrar la conexión
+        con.close();
+
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        // Puedes agregar aquí algún mensaje de error si lo deseas
+        System.err.println("Error al buscar usuarios en la base de datos.");
+    }       
+    }//GEN-LAST:event_botonBuscarMousePressed
+
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
-    private javax.swing.JPanel botonBuscar;
-    private javax.swing.JPanel botonEditar;
-    private javax.swing.JPanel botonEliminar;
-    private javax.swing.JPanel botonNuevo;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton botonBuscar;
+    private javax.swing.JButton botonEditar;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonNuevo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JSeparator separador1;
