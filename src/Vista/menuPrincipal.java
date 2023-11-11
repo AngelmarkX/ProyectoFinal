@@ -281,7 +281,7 @@ public class menuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Contenido;
+    public static javax.swing.JPanel Contenido;
     private javax.swing.JPanel Header;
     private javax.swing.JLabel app_name;
     private javax.swing.JPanel bgPrincipal;
