@@ -56,7 +56,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         menuPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelUsuarios.setBackground(new java.awt.Color(138, 84, 206));
-        labelUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 labelUsuariosMouseEntered(evt);
@@ -89,7 +89,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         menuPrincipal.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 190, 20));
 
         labelControlAcceso.setBackground(new java.awt.Color(138, 84, 206));
-        labelControlAcceso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelControlAcceso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelControlAcceso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 labelControlAccesoMouseEntered(evt);
@@ -114,7 +114,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         menuPrincipal.add(labelControlAcceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 240, 50));
 
         labelPrincipal.setBackground(new java.awt.Color(138, 84, 206));
-        labelPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 labelPrincipalMouseEntered(evt);
@@ -246,7 +246,14 @@ public class menuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_labelPrincipalMouseExited
 
     private void labelPrincipalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPrincipalMousePressed
-        // TODO add your handling code here:
+        Principal p1 = new Principal();
+        p1.setSize(680,530 );
+        p1.setLocation(0,0);
+        
+        Contenido.removeAll();
+        Contenido.add(p1, BorderLayout.CENTER);
+        Contenido.revalidate();
+        Contenido.repaint();
     }//GEN-LAST:event_labelPrincipalMousePressed
 
     /**

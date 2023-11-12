@@ -44,13 +44,14 @@ public class Principal extends javax.swing.JPanel {
         TextRyC2 = new javax.swing.JLabel();
         TextRyC3 = new javax.swing.JLabel();
         FotoLogo = new javax.swing.JLabel();
+        TextDescrip3 = new javax.swing.JLabel();
 
         Titulo.setFont(new java.awt.Font("Roboto", 3, 14)); // NOI18N
         Titulo.setText("Biblioteca Cardenal Darío Castrillón Hoyos de la Universidad Católica de Pereira");
 
-        TextDescrip.setText("La Biblioteca Cardenal Darío Castrillón Hoyos tiene como propósito contribuir al desarrollo académico, intelectual y cultural de la ");
+        TextDescrip.setText("La Biblioteca Cardenal Darío Castrillón Hoyos tiene como propósito contribuir al desarrollo académico, intelectual y");
 
-        TextDescrip2.setText("comunidad universitaria y de la región a través de recursos y servicios especializados que promuevan el aprendizaje y la investigación.");
+        TextDescrip2.setText("cultural de la comunidad universitaria y de la región a través de recursos y servicios especializados que promuevan");
 
         SubTitulo.setFont(new java.awt.Font("Roboto", 3, 12)); // NOI18N
         SubTitulo.setText("NUESTROS ESPACIOS ");
@@ -82,63 +83,62 @@ public class Principal extends javax.swing.JPanel {
 
         FotoLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LogoUniversidadXbiblioteca.png"))); // NOI18N
 
+        TextDescrip3.setText("el aprendizaje y la investigación.");
+
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
         BackGround.setLayout(BackGroundLayout);
         BackGroundLayout.setHorizontalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackGroundLayout.createSequentialGroup()
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(BackGroundLayout.createSequentialGroup()
-                            .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(BackGroundLayout.createSequentialGroup()
-                                    .addGap(44, 44, 44)
-                                    .addComponent(FotoSalaGeneral))
-                                .addGroup(BackGroundLayout.createSequentialGroup()
-                                    .addGap(78, 78, 78)
-                                    .addComponent(SalaGeneral)))
-                            .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(BackGroundLayout.createSequentialGroup()
-                                    .addGap(39, 39, 39)
-                                    .addComponent(SalaReferencia)
-                                    .addGap(45, 45, 45)
-                                    .addComponent(FotoSalaInfyJuve)
-                                    .addGap(54, 54, 54))
-                                .addGroup(BackGroundLayout.createSequentialGroup()
-                                    .addGap(56, 56, 56)
-                                    .addComponent(FotoSalaReferencia)
-                                    .addGap(76, 76, 76)
-                                    .addComponent(SalaInfanyJuvenil)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bibliocafe)
-                                    .addGap(42, 42, 42))))
-                        .addGroup(BackGroundLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(SubTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TextDescrip2)
-                                .addComponent(TextDescrip)
-                                .addComponent(FotoBibliocafe, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(FotoLogo, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FotoLogo)
+                            .addComponent(SubTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextDescrip)
+                            .addGroup(BackGroundLayout.createSequentialGroup()
+                                .addComponent(FotoSalaGeneral)
+                                .addGap(30, 30, 30)
+                                .addComponent(SalaReferencia)
+                                .addGap(30, 30, 30)
+                                .addComponent(FotoSalaInfyJuve)
+                                .addGap(30, 30, 30)
+                                .addComponent(FotoBibliocafe))
+                            .addComponent(TextDescrip2)))
+                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(SalaGeneral)
+                        .addGap(84, 84, 84)
+                        .addComponent(FotoSalaReferencia)
+                        .addGap(62, 62, 62)
+                        .addComponent(SalaInfanyJuvenil)
+                        .addGap(82, 82, 82)
+                        .addComponent(bibliocafe))
                     .addGroup(BackGroundLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SubTitulo2)
                             .addComponent(TextRyC)
                             .addComponent(TextRyC2)
-                            .addComponent(TextRyC3))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                            .addComponent(TextRyC3)))
+                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(TextDescrip3, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackGroundLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(18, 18, 18)
                 .addComponent(TextDescrip)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextDescrip2)
+                .addGap(7, 7, 7)
+                .addComponent(TextDescrip3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SubTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -161,9 +161,9 @@ public class Principal extends javax.swing.JPanel {
                 .addComponent(TextRyC2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextRyC3)
-                .addGap(41, 41, 41)
+                .addGap(35, 35, 35)
                 .addComponent(FotoLogo)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -193,6 +193,7 @@ public class Principal extends javax.swing.JPanel {
     private javax.swing.JLabel SubTitulo2;
     private javax.swing.JLabel TextDescrip;
     private javax.swing.JLabel TextDescrip2;
+    private javax.swing.JLabel TextDescrip3;
     private javax.swing.JLabel TextRyC;
     private javax.swing.JLabel TextRyC2;
     private javax.swing.JLabel TextRyC3;

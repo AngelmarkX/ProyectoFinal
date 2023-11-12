@@ -87,8 +87,6 @@ public class editarUsuario extends javax.swing.JPanel {
         jSeparator4 = new javax.swing.JSeparator();
         fieldNombre = new javax.swing.JTextField();
         textoNombre = new javax.swing.JLabel();
-        botonActualizar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         fieldCorreo = new javax.swing.JTextField();
         fieldTelefono = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
@@ -97,6 +95,7 @@ public class editarUsuario extends javax.swing.JPanel {
         textoCorreo = new javax.swing.JLabel();
         textoTelefono = new javax.swing.JLabel();
         Titulo = new javax.swing.JLabel();
+        botonActualizar = new javax.swing.JButton();
 
         jSeparator6.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator6.setPreferredSize(new java.awt.Dimension(200, 10));
@@ -155,27 +154,6 @@ public class editarUsuario extends javax.swing.JPanel {
         textoNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoNombre.setText("Nombre");
 
-        botonActualizar.setBackground(new java.awt.Color(119, 56, 200));
-        botonActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        botonActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonActualizarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonActualizarMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                botonActualizarMousePressed(evt);
-            }
-        });
-        botonActualizar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Actualizar");
-        botonActualizar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
-
         fieldCorreo.setForeground(new java.awt.Color(102, 102, 102));
         fieldCorreo.setBorder(null);
         fieldCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -221,11 +199,30 @@ public class editarUsuario extends javax.swing.JPanel {
         Titulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Titulo.setText("Actualizar Usuario");
 
+        botonActualizar.setBackground(new java.awt.Color(119, 56, 200));
+        botonActualizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        botonActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        botonActualizar.setText("Actualizar");
+        botonActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonActualizarMousePressed(evt);
+            }
+        });
+        botonActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 682, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(372, Short.MAX_VALUE)
+                .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -252,13 +249,15 @@ public class editarUsuario extends javax.swing.JPanel {
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(textoTelefono)
                         .addComponent(fieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(309, Short.MAX_VALUE)
+                .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -298,9 +297,7 @@ public class editarUsuario extends javax.swing.JPanel {
                             .addGap(10, 10, 10)
                             .addComponent(fieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(60, 60, 60)
-                            .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -340,17 +337,28 @@ public class editarUsuario extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldNombreActionPerformed
 
-    private void botonActualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonActualizarMouseEntered
+    private void fieldCorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldCorreoMousePressed
+    
+    }//GEN-LAST:event_fieldCorreoMousePressed
 
-    }//GEN-LAST:event_botonActualizarMouseEntered
+    private void fieldCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldCorreoActionPerformed
 
-    private void botonActualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonActualizarMouseExited
+    private void fieldTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldTelefonoMousePressed
+      
+    }//GEN-LAST:event_fieldTelefonoMousePressed
 
-    }//GEN-LAST:event_botonActualizarMouseExited
+    private void fieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldTelefonoActionPerformed
+
+    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonActualizarActionPerformed
 
     private void botonActualizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonActualizarMousePressed
-                                                
-    // Obtener la cédula actual (que actúa como UsuarioID)
+        // Obtener la cédula actual (que actúa como UsuarioID)
     String cedula = fieldCedula.getText();
 
     // Verificar si la cédula tiene datos
@@ -393,35 +401,17 @@ public class editarUsuario extends javax.swing.JPanel {
     } else {
         System.out.println("La cédula no puede estar vacía.");
     }
-
     }//GEN-LAST:event_botonActualizarMousePressed
-
-    private void fieldCorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldCorreoMousePressed
-    
-    }//GEN-LAST:event_fieldCorreoMousePressed
-
-    private void fieldCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldCorreoActionPerformed
-
-    private void fieldTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldTelefonoMousePressed
-      
-    }//GEN-LAST:event_fieldTelefonoMousePressed
-
-    private void fieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldTelefonoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titulo;
-    private javax.swing.JPanel botonActualizar;
+    private javax.swing.JButton botonActualizar;
     private javax.swing.JTextField fieldApellido;
     private javax.swing.JTextField fieldCedula;
     private javax.swing.JTextField fieldCorreo;
     private javax.swing.JTextField fieldNombre;
     private javax.swing.JTextField fieldTelefono;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

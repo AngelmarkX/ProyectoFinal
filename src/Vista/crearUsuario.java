@@ -45,8 +45,6 @@ public class crearUsuario extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         fieldTelefono = new javax.swing.JTextField();
         fieldCorreo = new javax.swing.JTextField();
-        botonRegistrar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         textoNombre = new javax.swing.JLabel();
         fieldNombre = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
@@ -56,6 +54,7 @@ public class crearUsuario extends javax.swing.JPanel {
         textoCedula = new javax.swing.JLabel();
         fieldCedula = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
+        botonRegistrar = new javax.swing.JButton();
 
         body.setBackground(new java.awt.Color(255, 255, 255));
         body.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,29 +113,6 @@ public class crearUsuario extends javax.swing.JPanel {
             }
         });
         body.add(fieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 260, 30));
-
-        botonRegistrar.setBackground(new java.awt.Color(119, 56, 200));
-        botonRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        botonRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonRegistrarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonRegistrarMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                botonRegistrarMousePressed(evt);
-            }
-        });
-        botonRegistrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registrar");
-        botonRegistrar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
-
-        body.add(botonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 260, 50));
 
         textoNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textoNombre.setText("Nombre");
@@ -207,6 +183,17 @@ public class crearUsuario extends javax.swing.JPanel {
         jSeparator6.setPreferredSize(new java.awt.Dimension(200, 10));
         body.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 260, 10));
 
+        botonRegistrar.setBackground(new java.awt.Color(119, 56, 200));
+        botonRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        botonRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        botonRegistrar.setText("Registrar");
+        botonRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonRegistrarMousePressed(evt);
+            }
+        });
+        body.add(botonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 270, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -252,54 +239,6 @@ public class crearUsuario extends javax.swing.JPanel {
     private void fieldCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCorreoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldCorreoActionPerformed
-
-    private void botonRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarMouseEntered
- 
-    }//GEN-LAST:event_botonRegistrarMouseEntered
-
-    private void botonRegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarMouseExited
-   
-    }//GEN-LAST:event_botonRegistrarMouseExited
-
-    private void botonRegistrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarMousePressed
-        String nombre = fieldNombre.getText();
-        String apellido = fieldApellido.getText();
-        String cedula = fieldCedula.getText();
-        String correo = fieldCorreo.getText();
-        String telefono = fieldTelefono.getText();
-
-        // Realizar la inserción en la base de datos
-        try {
-            // Establecer la conexión a la base de datos (reemplaza con tus propios detalles)
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
-
-            // Preparar la consulta SQL
-            String sql = "INSERT INTO Usuarios (Nombre, Apellido, UsuarioID, Correo, Telefono) VALUES (?, ?, ?, ?, ?)";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-
-            // Establecer los valores de los parámetros
-            pstmt.setString(1, nombre);
-            pstmt.setString(2, apellido);
-            pstmt.setString(3, cedula);
-            pstmt.setString(4, correo);
-            pstmt.setString(5, telefono);
-
-            // Ejecutar la consulta
-            pstmt.executeUpdate();
-
-            // Cerrar la conexión
-            conn.close();
-
-            // Puedes agregar aquí algún mensaje de éxito si lo deseas
-            System.out.println("Usuario registrado con exito.");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Puedes agregar aquí algún mensaje de error si lo deseas
-            System.err.println("Error al registrar usuario en la base de datos.");
-        }
-    
-    }//GEN-LAST:event_botonRegistrarMousePressed
 
     private void fieldNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldNombreMousePressed
        if(fieldNombre.getText().equals("Ingrese el nombre"));
@@ -352,17 +291,56 @@ public class crearUsuario extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldCedulaActionPerformed
 
+    private void botonRegistrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarMousePressed
+       String nombre = fieldNombre.getText();
+        String apellido = fieldApellido.getText();
+        String cedula = fieldCedula.getText();
+        String correo = fieldCorreo.getText();
+        String telefono = fieldTelefono.getText();
+
+        // Realizar la inserción en la base de datos
+        try {
+            // Establecer la conexión a la base de datos (reemplaza con tus propios detalles)
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
+
+            // Preparar la consulta SQL
+            String sql = "INSERT INTO Usuarios (Nombre, Apellido, UsuarioID, Correo, Telefono) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            // Establecer los valores de los parámetros
+            pstmt.setString(1, nombre);
+            pstmt.setString(2, apellido);
+            pstmt.setString(3, cedula);
+            pstmt.setString(4, correo);
+            pstmt.setString(5, telefono);
+
+            // Ejecutar la consulta
+            pstmt.executeUpdate();
+
+            // Cerrar la conexión
+            conn.close();
+
+            // Puedes agregar aquí algún mensaje de éxito si lo deseas
+            System.out.println("Usuario registrado con exito.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Puedes agregar aquí algún mensaje de error si lo deseas
+            System.err.println("Error al registrar usuario en la base de datos.");
+        }
+    
+    }//GEN-LAST:event_botonRegistrarMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titulo;
     private javax.swing.JPanel body;
-    private javax.swing.JPanel botonRegistrar;
+    private javax.swing.JButton botonRegistrar;
     private javax.swing.JTextField fieldApellido;
     private javax.swing.JTextField fieldCedula;
     private javax.swing.JTextField fieldCorreo;
     private javax.swing.JTextField fieldNombre;
     private javax.swing.JTextField fieldTelefono;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

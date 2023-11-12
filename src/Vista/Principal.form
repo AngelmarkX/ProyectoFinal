@@ -33,48 +33,34 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                      <Component id="FotoSalaGeneral" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                                      <Component id="SalaGeneral" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="FotoLogo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="SubTitulo" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="Titulo" min="-2" pref="500" max="-2" attributes="0"/>
+                              <Component id="TextDescrip" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="FotoSalaGeneral" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="SalaReferencia" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="FotoSalaInfyJuve" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="FotoBibliocafe" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                      <Component id="SalaReferencia" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                      <Component id="FotoSalaInfyJuve" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                      <Component id="FotoSalaReferencia" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                                      <Component id="SalaInfanyJuvenil" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="bibliocafe" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="TextDescrip2" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="SubTitulo" min="-2" pref="180" max="-2" attributes="0"/>
-                                  <Component id="Titulo" min="-2" pref="500" max="-2" attributes="0"/>
-                                  <Component id="TextDescrip2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextDescrip" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="FotoBibliocafe" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="FotoLogo" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="SalaGeneral" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                          <Component id="FotoSalaReferencia" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                          <Component id="SalaInfanyJuvenil" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="bibliocafe" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -85,8 +71,12 @@
                               <Component id="TextRyC3" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="TextDescrip3" min="-2" pref="622" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace pref="113" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -95,10 +85,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="Titulo" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="TextDescrip" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="TextDescrip2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Component id="TextDescrip3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="SubTitulo" min="-2" pref="27" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -123,9 +115,9 @@
                   <Component id="TextRyC2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="TextRyC3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="FotoLogo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="55" max="32767" attributes="0"/>
+                  <EmptySpace pref="61" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -141,12 +133,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="TextDescrip">
           <Properties>
-            <Property name="text" type="java.lang.String" value="La Biblioteca Cardenal Dar&#xed;o Castrill&#xf3;n Hoyos tiene como prop&#xf3;sito contribuir al desarrollo acad&#xe9;mico, intelectual y cultural de la "/>
+            <Property name="text" type="java.lang.String" value="La Biblioteca Cardenal Dar&#xed;o Castrill&#xf3;n Hoyos tiene como prop&#xf3;sito contribuir al desarrollo acad&#xe9;mico, intelectual y"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="TextDescrip2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="comunidad universitaria y de la regi&#xf3;n a trav&#xe9;s de recursos y servicios especializados que promuevan el aprendizaje y la investigaci&#xf3;n."/>
+            <Property name="text" type="java.lang.String" value="cultural de la comunidad universitaria y de la regi&#xf3;n a trav&#xe9;s de recursos y servicios especializados que promuevan"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="SubTitulo">
@@ -233,6 +225,11 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Images/LogoUniversidadXbiblioteca.png"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="TextDescrip3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="el aprendizaje y la investigaci&#xf3;n."/>
           </Properties>
         </Component>
       </SubComponents>

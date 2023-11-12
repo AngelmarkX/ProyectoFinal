@@ -6,7 +6,6 @@ package Vista;
 
 import java.awt.BorderLayout;
 import static Vista.menuPrincipal.Contenido;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
@@ -176,6 +175,7 @@ public class pantallaUsuario extends javax.swing.JPanel {
         botonNuevo.setForeground(new java.awt.Color(255, 255, 255));
         botonNuevo.setText("NUEVO");
         botonNuevo.setAlignmentX(0.5F);
+        botonNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonNuevo.setPreferredSize(new java.awt.Dimension(65, 20));
         botonNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -193,6 +193,7 @@ public class pantallaUsuario extends javax.swing.JPanel {
         botonEditar.setForeground(new java.awt.Color(255, 255, 255));
         botonEditar.setText("EDITAR");
         botonEditar.setAlignmentX(0.5F);
+        botonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonEditar.setPreferredSize(new java.awt.Dimension(65, 20));
         botonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -210,6 +211,7 @@ public class pantallaUsuario extends javax.swing.JPanel {
         botonEliminar.setForeground(new java.awt.Color(255, 255, 255));
         botonEliminar.setText("ELIMINAR");
         botonEliminar.setAlignmentX(0.5F);
+        botonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonEliminar.setPreferredSize(new java.awt.Dimension(65, 20));
         botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
