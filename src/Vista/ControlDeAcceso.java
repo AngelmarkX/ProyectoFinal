@@ -4,6 +4,15 @@
  */
 package Vista;
 
+import static Vista.menuPrincipal.Contenido;
+import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
@@ -15,7 +24,54 @@ public class ControlDeAcceso extends javax.swing.JPanel {
      */
     public ControlDeAcceso() {
         initComponents();
+        cargarDatosTabla();
     }
+    
+    private void cargarDatosTabla() {
+        // Configuración del modelo de la tabla
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("AccesoID");
+        model.addColumn("Dia");
+        model.addColumn("Hora Entrada");
+        model.addColumn("Hora Salida");
+        // Llenar la tabla con datos de la base de datos
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
+            String query = "SELECT * FROM RegistrosAcceso";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                // Agregar fila a la tabla
+                model.addRow(new Object[]{
+                        rs.getInt("usuarioID"),
+                        rs.getString("RegistroAccesoID"),
+                        rs.getString("Fecha"),
+                        rs.getString("HoraEntrada"),
+                        rs.getString("HoraSalida")
+                });
+            }
+        } catch (SQLException ex) {
+            
+        }
+
+        // Establecer el modelo en la tabla
+        TablaBaseControl.setModel(model);
+    }
+    
+    private int obtenerUsuarioIDSeleccionado() {
+    int filaSeleccionada = TablaBaseControl.getSelectedRow();
+
+    // Verificar si hay una fila seleccionada
+    if (filaSeleccionada == -1) {
+        System.out.println("Seleccione un usuario.");
+        return -1; // Devuelve un valor que indica que no hay usuario seleccionado
+    }
+
+    // Obtener el ID del usuario seleccionado en la tabla
+    return (int) TablaBaseControl.getValueAt(filaSeleccionada, 0);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,10 +87,11 @@ public class ControlDeAcceso extends javax.swing.JPanel {
         ControlDeAcceso = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         Buscador = new javax.swing.JLabel();
-        BotonActuali = new javax.swing.JButton();
+        botonActivos = new javax.swing.JButton();
         ScrollPanelDeTabla = new javax.swing.JScrollPane();
         TablaBaseControl = new javax.swing.JTable();
         botonBuscar = new javax.swing.JButton();
+        botonIngresar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -47,36 +104,42 @@ public class ControlDeAcceso extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        PanelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         ControlDeAcceso.setText("CONTROL DE ACCESO");
+        PanelPrincipal.add(ControlDeAcceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 21, -1, 30));
+        PanelPrincipal.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 107, 410, -1));
 
-        Buscador.setText("Ingrese el nombre de usuario a buscar.");
+        Buscador.setText("Ingrese el ID a buscar.");
+        PanelPrincipal.add(Buscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 75, 307, 22));
 
-        BotonActuali.setBackground(new java.awt.Color(119, 56, 200));
-        BotonActuali.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BotonActuali.setForeground(new java.awt.Color(255, 255, 255));
-        BotonActuali.setText("ACTUALIZAR");
-        BotonActuali.addActionListener(new java.awt.event.ActionListener() {
+        botonActivos.setBackground(new java.awt.Color(119, 56, 200));
+        botonActivos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonActivos.setForeground(new java.awt.Color(255, 255, 255));
+        botonActivos.setText("ACTIVOS");
+        botonActivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonActualiActionPerformed(evt);
+                botonActivosActionPerformed(evt);
             }
         });
+        PanelPrincipal.add(botonActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 120, 39));
 
         TablaBaseControl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Dia ", "Hora", "Lista De Horarios"
+                "ID", "AccesoID", "Dia ", "Hora Entrada", "Hora Salida"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true
+                false, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -89,55 +152,24 @@ public class ControlDeAcceso extends javax.swing.JPanel {
         });
         ScrollPanelDeTabla.setViewportView(TablaBaseControl);
 
+        PanelPrincipal.add(ScrollPanelDeTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 116, 622, 307));
+
         botonBuscar.setBackground(new java.awt.Color(119, 56, 200));
         botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonBuscar.setForeground(new java.awt.Color(255, 255, 255));
         botonBuscar.setText("BUSCAR");
+        PanelPrincipal.add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 57, 114, 40));
 
-        javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
-        PanelPrincipal.setLayout(PanelPrincipalLayout);
-        PanelPrincipalLayout.setHorizontalGroup(
-            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ControlDeAcceso)
-                    .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelPrincipalLayout.createSequentialGroup()
-                            .addGap(16, 16, 16)
-                            .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                                    .addComponent(Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(ScrollPanelDeTabla, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(165, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotonActuali, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
-        );
-        PanelPrincipalLayout.setVerticalGroup(
-            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(ControlDeAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ScrollPanelDeTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(BotonActuali, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
-        );
+        botonIngresar.setBackground(new java.awt.Color(119, 56, 200));
+        botonIngresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonIngresar.setForeground(new java.awt.Color(255, 255, 255));
+        botonIngresar.setText("INGRESAR");
+        botonIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonIngresarMousePressed(evt);
+            }
+        });
+        PanelPrincipal.add(botonIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 120, 39));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -147,23 +179,35 @@ public class ControlDeAcceso extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonActualiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActualiActionPerformed
+    private void botonActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActivosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BotonActualiActionPerformed
+    }//GEN-LAST:event_botonActivosActionPerformed
+
+    private void botonIngresarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIngresarMousePressed
+        ingresarAcceso p1 = new ingresarAcceso();
+        p1.setSize(680,530 );
+        p1.setLocation(0,0);
+       
+        Contenido.removeAll();
+        Contenido.add(p1, BorderLayout.CENTER);
+        Contenido.revalidate();
+        
+    }//GEN-LAST:event_botonIngresarMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonActuali;
     private javax.swing.JLabel Buscador;
     private javax.swing.JLabel ControlDeAcceso;
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JScrollPane ScrollPanelDeTabla;
     private javax.swing.JTable TablaBaseControl;
+    private javax.swing.JButton botonActivos;
     private javax.swing.JButton botonBuscar;
+    private javax.swing.JButton botonIngresar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
