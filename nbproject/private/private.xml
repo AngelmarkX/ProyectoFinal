@@ -4,12 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Vista/Principal.java</file>
-            <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Vista/editarUsuario.java</file>
             <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Vista/crearUsuario.java</file>
             <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Vista/pantallaUsuario.java</file>
-            <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Vista/menuPrincipal.java</file>
-            <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Vista/Login.java</file>
             <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Vista/ControlDeAcceso.java</file>
+            <file>file:/C:/Users/usuario/Desktop/GITHUB/ProyectoFinal/src/Vista/ingresarAcceso.java</file>
         </group>
     </open-files>
 </project-private>

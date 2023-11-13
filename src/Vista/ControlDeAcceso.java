@@ -6,6 +6,7 @@ package Vista;
 
 import static Vista.menuPrincipal.Contenido;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,37 +29,43 @@ public class ControlDeAcceso extends javax.swing.JPanel {
     }
     
     private void cargarDatosTabla() {
-        // Configuración del modelo de la tabla
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("ID");
-        model.addColumn("AccesoID");
-        model.addColumn("Dia");
-        model.addColumn("Hora Entrada");
-        model.addColumn("Hora Salida");
-        // Llenar la tabla con datos de la base de datos
-        try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
-            String query = "SELECT * FROM RegistrosAcceso";
-            PreparedStatement pst = con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
+ // Configuración del modelo de la tabla
+    DefaultTableModel model = new DefaultTableModel();
+    model.addColumn("Cedula");
+    model.addColumn("AccesoID");
+    model.addColumn("Dia");
+    model.addColumn("Hora Entrada");
+    model.addColumn("Hora Salida");
+    model.addColumn("Estado"); // Nueva columna para mostrar el estado
 
-            while (rs.next()) {
-                // Agregar fila a la tabla
-                model.addRow(new Object[]{
-                        rs.getInt("usuarioID"),
-                        rs.getString("RegistroAccesoID"),
-                        rs.getString("Fecha"),
-                        rs.getString("HoraEntrada"),
-                        rs.getString("HoraSalida")
-                });
-            }
-        } catch (SQLException ex) {
-            
+    // Llenar la tabla con datos de la base de datos
+    try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
+        String query = "SELECT * FROM RegistrosAcceso";
+        PreparedStatement pst = con.prepareStatement(query);
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            // Obtener el estado en base a la presencia de la hora de salida
+            String estado = (rs.getString("HoraSalida") != null) ? "Salio" : "Ingreso";
+
+            // Agregar fila a la tabla
+            model.addRow(new Object[]{
+                    rs.getInt("usuarioID"),
+                    rs.getString("RegistroAccesoID"),
+                    rs.getString("Fecha"),
+                    rs.getString("HoraEntrada"),
+                    rs.getString("HoraSalida"),
+                    estado
+            });
         }
-
-        // Establecer el modelo en la tabla
-        TablaBaseControl.setModel(model);
+    } catch (SQLException ex) {
+        ex.printStackTrace();
     }
+
+    // Establecer el modelo en la tabla
+    TablaBaseControl.setModel(model);
+}
     
     private int obtenerUsuarioIDSeleccionado() {
     int filaSeleccionada = TablaBaseControl.getSelectedRow();
@@ -71,6 +78,19 @@ public class ControlDeAcceso extends javax.swing.JPanel {
 
     // Obtener el ID del usuario seleccionado en la tabla
     return (int) TablaBaseControl.getValueAt(filaSeleccionada, 0);
+}
+    
+    private String obtenerAccesoIDSeleccionado() {
+    int filaSeleccionada = TablaBaseControl.getSelectedRow();
+
+    // Verificar si hay una fila seleccionada
+    if (filaSeleccionada == -1) {
+        System.out.println("Seleccione un registro.");
+        return null; // Devuelve null indicando que no hay registro seleccionado
+    }
+
+    // Obtener el AccesoID del registro seleccionado en la tabla
+    return (String) TablaBaseControl.getValueAt(filaSeleccionada, 1); // Cambiado a la columna AccesoID
 }
 
     /**
@@ -86,12 +106,13 @@ public class ControlDeAcceso extends javax.swing.JPanel {
         PanelPrincipal = new javax.swing.JPanel();
         ControlDeAcceso = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        Buscador = new javax.swing.JLabel();
-        botonActivos = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
         ScrollPanelDeTabla = new javax.swing.JScrollPane();
         TablaBaseControl = new javax.swing.JTable();
         botonBuscar = new javax.swing.JButton();
-        botonIngresar = new javax.swing.JButton();
+        botonIngresarEntrada = new javax.swing.JButton();
+        botonIngresarSalida = new javax.swing.JButton();
+        fieldCedulaBuscar = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,36 +131,49 @@ public class ControlDeAcceso extends javax.swing.JPanel {
         PanelPrincipal.add(ControlDeAcceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 21, -1, 30));
         PanelPrincipal.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 107, 410, -1));
 
-        Buscador.setText("Ingrese el ID a buscar.");
-        PanelPrincipal.add(Buscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 75, 307, 22));
-
-        botonActivos.setBackground(new java.awt.Color(119, 56, 200));
-        botonActivos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        botonActivos.setForeground(new java.awt.Color(255, 255, 255));
-        botonActivos.setText("ACTIVOS");
-        botonActivos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonActivosActionPerformed(evt);
+        botonEliminar.setBackground(new java.awt.Color(119, 56, 200));
+        botonEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        botonEliminar.setText("ELIMINAR");
+        botonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonEliminarMousePressed(evt);
             }
         });
-        PanelPrincipal.add(botonActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 120, 39));
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+        PanelPrincipal.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 120, 39));
+
+        ScrollPanelDeTabla.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                ScrollPanelDeTablaAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         TablaBaseControl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "AccesoID", "Dia ", "Hora Entrada", "Hora Salida"
+                "Cedula", "AccesoID", "Dia ", "Hora Entrada", "Hora Salida", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true
+                false, true, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -158,18 +192,57 @@ public class ControlDeAcceso extends javax.swing.JPanel {
         botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonBuscar.setForeground(new java.awt.Color(255, 255, 255));
         botonBuscar.setText("BUSCAR");
-        PanelPrincipal.add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 57, 114, 40));
-
-        botonIngresar.setBackground(new java.awt.Color(119, 56, 200));
-        botonIngresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        botonIngresar.setForeground(new java.awt.Color(255, 255, 255));
-        botonIngresar.setText("INGRESAR");
-        botonIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+        botonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                botonIngresarMousePressed(evt);
+                botonBuscarMousePressed(evt);
             }
         });
-        PanelPrincipal.add(botonIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 120, 39));
+        PanelPrincipal.add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 57, 114, 40));
+
+        botonIngresarEntrada.setBackground(new java.awt.Color(119, 56, 200));
+        botonIngresarEntrada.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonIngresarEntrada.setForeground(new java.awt.Color(255, 255, 255));
+        botonIngresarEntrada.setText("ENTRADA");
+        botonIngresarEntrada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonIngresarEntrada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonIngresarEntradaMousePressed(evt);
+            }
+        });
+        botonIngresarEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIngresarEntradaActionPerformed(evt);
+            }
+        });
+        PanelPrincipal.add(botonIngresarEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 120, 39));
+
+        botonIngresarSalida.setBackground(new java.awt.Color(119, 56, 200));
+        botonIngresarSalida.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonIngresarSalida.setForeground(new java.awt.Color(255, 255, 255));
+        botonIngresarSalida.setText("SALIDA");
+        botonIngresarSalida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonIngresarSalida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonIngresarSalidaMousePressed(evt);
+            }
+        });
+        PanelPrincipal.add(botonIngresarSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 120, 39));
+
+        fieldCedulaBuscar.setForeground(new java.awt.Color(102, 102, 102));
+        fieldCedulaBuscar.setText("Ingrese la cedula del usuario a buscar");
+        fieldCedulaBuscar.setBorder(null);
+        fieldCedulaBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                fieldCedulaBuscarMousePressed(evt);
+            }
+        });
+        fieldCedulaBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldCedulaBuscarActionPerformed(evt);
+            }
+        });
+        PanelPrincipal.add(fieldCedulaBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 410, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -183,11 +256,7 @@ public class ControlDeAcceso extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActivosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonActivosActionPerformed
-
-    private void botonIngresarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIngresarMousePressed
+    private void botonIngresarEntradaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIngresarEntradaMousePressed
         ingresarAcceso p1 = new ingresarAcceso();
         p1.setSize(680,530 );
         p1.setLocation(0,0);
@@ -196,18 +265,138 @@ public class ControlDeAcceso extends javax.swing.JPanel {
         Contenido.add(p1, BorderLayout.CENTER);
         Contenido.revalidate();
         
-    }//GEN-LAST:event_botonIngresarMousePressed
+    }//GEN-LAST:event_botonIngresarEntradaMousePressed
+
+    private void botonIngresarSalidaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIngresarSalidaMousePressed
+        salidaAcceso p1 = new salidaAcceso();
+        p1.setSize(680,530 );
+        p1.setLocation(0,0);
+       
+        Contenido.removeAll();
+        Contenido.add(p1, BorderLayout.CENTER);
+        Contenido.revalidate();
+    }//GEN-LAST:event_botonIngresarSalidaMousePressed
+
+    private void botonIngresarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarEntradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonIngresarEntradaActionPerformed
+
+    private void ScrollPanelDeTablaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ScrollPanelDeTablaAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ScrollPanelDeTablaAncestorAdded
+
+    private void botonBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBuscarMousePressed
+                                                
+        String cedulaUsuario = fieldCedulaBuscar.getText();
+
+    // Ejecutar la consulta SQL para buscar registros de acceso por usuarioID
+    try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
+        String query = "SELECT * FROM RegistrosAcceso WHERE usuarioID LIKE ?";
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, "%" + cedulaUsuario + "%"); // Utilizamos % para buscar coincidencias parciales
+
+        ResultSet rs = pst.executeQuery();
+
+        // Configuración del modelo de la tabla
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Cedula");
+        model.addColumn("AccesoID");
+        model.addColumn("Dia");
+        model.addColumn("Hora Entrada");
+        model.addColumn("Hora Salida");
+        model.addColumn("Estado"); // Nuevo campo agregado
+
+        // Llenar la tabla con datos de la consulta
+        while (rs.next()) {
+            String estado = (rs.getString("HoraSalida") != null) ? "Salida" : "Entrada";
+            model.addRow(new Object[]{
+                    rs.getInt("usuarioID"),
+                    rs.getString("RegistroAccesoID"),
+                    rs.getString("Fecha"),
+                    rs.getString("HoraEntrada"),
+                    rs.getString("HoraSalida"),
+                    estado
+            });
+        }
+
+        // Establecer el modelo en la tabla correcta (TablaBaseControl)
+        TablaBaseControl.setModel(model);
+
+        // Cerrar la conexión
+        con.close();
+
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        // Puedes agregar aquí algún mensaje de error si lo deseas
+        System.err.println("Error al buscar registros de acceso en la base de datos.");
+    }
+    }//GEN-LAST:event_botonBuscarMousePressed
+
+    private void fieldCedulaBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldCedulaBuscarMousePressed
+        if (fieldCedulaBuscar.getText().equals("Ingrese la cedula del usuario a buscar")) {
+            fieldCedulaBuscar.setText("");
+            fieldCedulaBuscar.setForeground(Color.black);
+        }
+
+    }//GEN-LAST:event_fieldCedulaBuscarMousePressed
+
+    private void fieldCedulaBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCedulaBuscarActionPerformed
+
+    }//GEN-LAST:event_fieldCedulaBuscarActionPerformed
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+         // Obtener el AccesoID del registro seleccionado en la tabla
+    String accesoID = obtenerAccesoIDSeleccionado();
+
+    // Verificar si hay un registro seleccionado
+    if (accesoID != null) {
+        // Confirmar si el usuario realmente desea eliminar el registro
+        int confirmacion = javax.swing.JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas eliminar este registro?", "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
+        
+        if (confirmacion == javax.swing.JOptionPane.YES_OPTION) {
+            // Ejecutar la consulta SQL para eliminar el registro
+            try {
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
+                String query = "DELETE FROM RegistrosAcceso WHERE RegistroAccesoID = ?";
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.setString(1, accesoID);
+
+                int filasAfectadas = pst.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    System.out.println("Registro eliminado exitosamente.");
+                    cargarDatosTabla(); // Volver a cargar los datos en la tabla después de la eliminación
+                } else {
+                    System.out.println("No se pudo eliminar el registro.");
+                }
+
+                // Cerrar la conexión
+                con.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                System.err.println("Error al eliminar el registro en la base de datos.");
+            }
+        }
+    }
+
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonEliminarMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Buscador;
     private javax.swing.JLabel ControlDeAcceso;
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JScrollPane ScrollPanelDeTabla;
     private javax.swing.JTable TablaBaseControl;
-    private javax.swing.JButton botonActivos;
     private javax.swing.JButton botonBuscar;
-    private javax.swing.JButton botonIngresar;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonIngresarEntrada;
+    private javax.swing.JButton botonIngresarSalida;
+    private javax.swing.JTextField fieldCedulaBuscar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
