@@ -399,12 +399,12 @@ public class pantallaUsuario extends javax.swing.JPanel {
         // Volver a cargar los datos en la tabla después de la eliminación
         cargarDatosTabla();
 
-        // Puedes agregar aquí algún mensaje de éxito si lo deseas
+      
         System.out.println("Usuario eliminado con exito.");
 
     } catch (SQLException ex) {
         ex.printStackTrace();
-        // Puedes agregar aquí algún mensaje de error si lo deseas
+       
         System.err.println("Error al eliminar usuario de la base de datos.");
     }
     }//GEN-LAST:event_botonEliminarMousePressed
@@ -414,7 +414,7 @@ public class pantallaUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBuscarMousePressed
-               // Obtener el nombre de usuario a buscar
+    // Obtener el nombre de usuario a buscar
     String nombreUsuario = textoFieldUsuario.getText();
 
     // Ejecutar la consulta SQL para buscar usuarios por nombre
@@ -453,7 +453,7 @@ public class pantallaUsuario extends javax.swing.JPanel {
 
     } catch (SQLException ex) {
         ex.printStackTrace();
-        // Puedes agregar aquí algún mensaje de error si lo deseas
+  
         System.err.println("Error al buscar usuarios en la base de datos.");
     }       
     }//GEN-LAST:event_botonBuscarMousePressed

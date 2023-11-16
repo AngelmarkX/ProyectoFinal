@@ -156,7 +156,7 @@ public class ingresarAcceso extends javax.swing.JPanel {
 
         // Realizar la inserción en la base de datos
         try {
-            // Establecer la conexión a la base de datos (reemplaza con tus propios detalles)
+            // Establecer la conexión a la base de datos 
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
 
             // Preparar la consulta SQL
@@ -174,12 +174,12 @@ public class ingresarAcceso extends javax.swing.JPanel {
             // Cerrar la conexión
             conn.close();
 
-            // Puedes agregar aquí algún mensaje de éxito si lo deseas
+          
             System.out.println("Acceso registrado con exito.");
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Puedes agregar aquí algún mensaje de error si lo deseas
+         
             System.err.println("Error al registrar acceso en la base de datos.");
         }
     }//GEN-LAST:event_botonIngresarSalidaMousePressed

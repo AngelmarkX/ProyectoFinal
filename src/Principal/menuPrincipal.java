@@ -211,7 +211,9 @@ public class menuPrincipal extends javax.swing.JFrame {
         p1.setLocation(0,0);
         
         Contenido.removeAll();
+         // Agregar la instancia de pantallaUsuario al contenedor
         Contenido.add(p1, BorderLayout.CENTER);
+        // Validar y repintar el contenedor para reflejar los cambios
         Contenido.revalidate();
         Contenido.repaint();
     }//GEN-LAST:event_labelUsuariosMousePressed

@@ -120,7 +120,9 @@ public class salidaAcceso extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -147,7 +149,7 @@ public class salidaAcceso extends javax.swing.JPanel {
 
         if (fechaEntrada != null) {
             try {
-                // Establecer la conexión a la base de datos (reemplaza con tus propios detalles)
+                // Establecer la conexión a la base de datos 
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
 
                 // Formatear la fecha de entrada como "yyyy-MM-dd"
@@ -169,16 +171,16 @@ public class salidaAcceso extends javax.swing.JPanel {
                 // Cerrar la conexión
                 conn.close();
 
-                // Puedes agregar aquí algún mensaje de éxito si lo deseas
+               
                 System.out.println("Salida registrada con éxito.");
 
             } catch (SQLException e) {
                 e.printStackTrace();
-                // Puedes agregar aquí algún mensaje de error si lo deseas
+               
                 System.err.println("Error al registrar salida en la base de datos.");
             }
         } else {
-            // Puedes manejar la situación donde la fecha de entrada es nula
+    
             System.err.println("La fecha de entrada no puede ser nula.");
         }
     

@@ -30,12 +30,13 @@ public class editarUsuario extends javax.swing.JPanel {
     
      public void setDatosUsuario(int usuarioID) {
         try {
-            // Establecer la conexión a la base de datos (reemplaza con tus propios detalles)
+            // Establecer la conexión a la base de datos
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
 
             // Preparar la consulta SQL para obtener los datos del usuario por su ID
             String sql = "SELECT * FROM Usuarios WHERE UsuarioID = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
+            //Comienza en 1
             pstmt.setInt(1, usuarioID);
 
             // Ejecutar la consulta
@@ -63,7 +64,7 @@ public class editarUsuario extends javax.swing.JPanel {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Puedes agregar aquí algún mensaje de error si lo deseas
+           
             System.err.println("Error al obtener datos del usuario desde la base de datos.");
         }
     }
@@ -390,12 +391,12 @@ public class editarUsuario extends javax.swing.JPanel {
             // Cerrar la conexión
             conn.close();
 
-            // Puedes agregar aquí algún mensaje de éxito si lo deseas
+
             System.out.println("Usuario actualizado con exito.");
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Puedes agregar aquí algún mensaje de error si lo deseas
+        
             System.err.println("Error al actualizar usuario en la base de datos.");
         }
     } else {

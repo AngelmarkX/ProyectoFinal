@@ -207,7 +207,9 @@ public class crearUsuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fieldTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldTelefonoMousePressed
-       if(fieldNombre.getText().equals("") || fieldNombre.getText() == null || fieldNombre.getText().equals(" "))
+        //.equals hace la comparacion
+        
+        if(fieldNombre.getText().equals("") || fieldNombre.getText() == null || fieldNombre.getText().equals(" "))
         fieldNombre.setText("Ingrese el nombre");
        if(fieldApellido.getText().equals("") || fieldApellido.getText() == null || fieldApellido.getText().equals(" "))
         fieldApellido.setText("Ingrese el apellido");
@@ -224,7 +226,8 @@ public class crearUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_fieldTelefonoActionPerformed
 
     private void fieldCorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldCorreoMousePressed
-        if(fieldNombre.getText().equals("") || fieldNombre.getText() == null || fieldNombre.getText().equals(" "))
+        //.equals hace la comparacion
+       if(fieldNombre.getText().equals("") || fieldNombre.getText() == null || fieldNombre.getText().equals(" "))
         fieldNombre.setText("Ingrese el nombre");
        if(fieldApellido.getText().equals("") || fieldApellido.getText() == null || fieldApellido.getText().equals(" "))
         fieldApellido.setText("Ingrese el apellido");
@@ -241,7 +244,8 @@ public class crearUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_fieldCorreoActionPerformed
 
     private void fieldNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldNombreMousePressed
-       if(fieldNombre.getText().equals("Ingrese el nombre"));
+       //.equals hace la comparacion
+        if(fieldNombre.getText().equals("Ingrese el nombre"));
         fieldNombre.setText("");
        if(fieldApellido.getText().equals("") || fieldApellido.getText() == null || fieldApellido.getText().equals(" "))
         fieldApellido.setText("Ingrese el apellido");
@@ -258,7 +262,8 @@ public class crearUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_fieldNombreActionPerformed
 
     private void fieldApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldApellidoMousePressed
-       if(fieldNombre.getText().equals("") || fieldNombre.getText() == null || fieldNombre.getText().equals(" "))
+      //.equals hace la comparacion
+        if(fieldNombre.getText().equals("") || fieldNombre.getText() == null || fieldNombre.getText().equals(" "))
         fieldNombre.setText("Ingrese el nombre");
        if(fieldApellido.getText().equals("Ingrese el apellido"));
         fieldApellido.setText("");
@@ -275,7 +280,8 @@ public class crearUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_fieldApellidoActionPerformed
 
     private void fieldCedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldCedulaMousePressed
-       if(fieldNombre.getText().equals("") || fieldNombre.getText() == null || fieldNombre.getText().equals(" "))
+      //.equals hace la comparacion
+        if(fieldNombre.getText().equals("") || fieldNombre.getText() == null || fieldNombre.getText().equals(" "))
         fieldNombre.setText("Ingrese el nombre");
        if(fieldApellido.getText().equals("") || fieldApellido.getText() == null || fieldApellido.getText().equals(" "))
         fieldApellido.setText("Ingrese el apellido");
@@ -292,7 +298,8 @@ public class crearUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_fieldCedulaActionPerformed
 
     private void botonRegistrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarMousePressed
-       String nombre = fieldNombre.getText();
+       
+        String nombre = fieldNombre.getText();
         String apellido = fieldApellido.getText();
         String cedula = fieldCedula.getText();
         String correo = fieldCorreo.getText();
@@ -300,7 +307,9 @@ public class crearUsuario extends javax.swing.JPanel {
 
         // Realizar la inserción en la base de datos
         try {
-            // Establecer la conexión a la base de datos (reemplaza con tus propios detalles)
+            // Establecer la conexión a la base de datos
+            //DriverManager es una clase en Java que gestiona una lista de controladores de bases de datos. 
+            
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecadb", "root", "123456");
 
             // Preparar la consulta SQL
@@ -320,12 +329,12 @@ public class crearUsuario extends javax.swing.JPanel {
             // Cerrar la conexión
             conn.close();
 
-            // Puedes agregar aquí algún mensaje de éxito si lo deseas
+    
             System.out.println("Usuario registrado con exito.");
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Puedes agregar aquí algún mensaje de error si lo deseas
+         
             System.err.println("Error al registrar usuario en la base de datos.");
         }
     

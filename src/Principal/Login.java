@@ -231,10 +231,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_userPasswordMousePressed
 
     private void EntrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EntrarMousePressed
-         String usuario = userTxt.getText();
+        // Obtener el nombre de usuario desde el campo de texto
+        String usuario = userTxt.getText();
+        // Obtener la contraseña como un arreglo de caracteres desde el campo de contraseña
         char[] caracteresContraseña = userPassword.getPassword();
+        // Convertir el arreglo de caracteres a una cadena (String)
         String contraseña = new String(caracteresContraseña);
-
+        
+        // Llamar a la función autenticar con el nombre de usuario y la contraseña
         if (autenticar(usuario, contraseña)) {
             // Las credenciales son válidas, permitir el acceso
             JOptionPane.showMessageDialog(null, "Ingreso exitoso");
@@ -253,12 +257,22 @@ public class Login extends javax.swing.JFrame {
 
     private boolean autenticar(String usuario, String contraseña) {
         try {
+             // Definir la consulta SQL
             Connection connection = conexionDB.getConnection();
+            
+            // Definir la consulta SQL parametrizada
             String query = "SELECT * FROM Administradores WHERE Usuario = ? AND Contraseña = ?";
+            
+             // Crear un PreparedStatement a partir de la conexión y la consulta
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            
+             // Establecer el valor del primer parámetro (Usuario) en la consulta
             preparedStatement.setString(1, usuario);
+            
+            // Establecer el valor del segundo parámetro (Contraseña) en la consulta
             preparedStatement.setString(2, contraseña);
-
+            
+            // Ejecutar la consulta y obtener los resultados
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return resultSet.next(); // Si hay un resultado, las credenciales son válidas

@@ -187,7 +187,7 @@ public class ControlDeAcceso extends javax.swing.JPanel {
         });
         ScrollPanelDeTabla.setViewportView(TablaBaseControl);
 
-        PanelPrincipal.add(ScrollPanelDeTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 116, 622, 307));
+        PanelPrincipal.add(ScrollPanelDeTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 622, 307));
 
         botonBuscar.setBackground(new java.awt.Color(119, 56, 200));
         botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -329,7 +329,7 @@ public class ControlDeAcceso extends javax.swing.JPanel {
 
     } catch (SQLException ex) {
         ex.printStackTrace();
-        // Puedes agregar aquí algún mensaje de error si lo deseas
+        
         System.err.println("Error al buscar registros de acceso en la base de datos.");
     }
     }//GEN-LAST:event_botonBuscarMousePressed
